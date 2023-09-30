@@ -24,7 +24,7 @@ function Power() {
   }, [id]);
 
   if (status === "pending") return <h1>Loading...</h1>;
-  if (status === "rejected") return <h1>Error: {error.error}</h1>;
+  if (status === "rejected") return <h1>Error: {error}</h1>;
 
   return (
     <section>

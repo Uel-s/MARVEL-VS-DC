@@ -16,7 +16,7 @@ app = Flask(__name__,
 
 )
 
-app.config['SQLALCHEMY_DATABASE_URI'] =  "sqlite:///super_heroes.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URI")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
@@ -25,6 +25,12 @@ migrate = Migrate(app, db)
 api = Api(app)
 
 db.init_app(app)
+
+
+@app.errorhandler(404)
+def index(id=0):
+    return render_template("index.html")
+
 
 @app.route('/')
 def home():
