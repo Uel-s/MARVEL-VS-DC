@@ -32,9 +32,9 @@ def index(id=0):
     return render_template("index.html")
 
 
-@app.route('/')
+""" @app.route('/')
 def home():
-    return "<h1>DC COMICS</h1"
+    return "<h1>DC COMICS</h1" """
 
 class HeroesResource(Resource):
 
