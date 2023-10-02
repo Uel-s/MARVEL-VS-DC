@@ -13,7 +13,13 @@ class Heroes(db.Model):
     created_at = db.Column(db.DateTime,server_default=db.func.now()) 
     updated_at = db.Column(db.DateTime,onupdate=db.func.now())
     heroes_power = db.relationship("Heroes_Powers", back_populates="heroes")
+    def __repr__(self):
+        return f"Heroes(id={self.id}, name={self.name}, super_name{self.super_name})"
 
+
+
+
+   
 ################################################## HEROES_POWER################################################################
 class Heroes_Powers(db.Model): 
     __tablename__ = 'heroes_powers'
@@ -32,6 +38,10 @@ def validates_strength(self,key,strength):
     if strength not in ["Strong", "Weak", "Average"]:
         raise ValidationError("Strength must be Strong,Weak or Average")
     return strength    
+    
+    def __repr__(self):
+        return f"Heroes_Powers(id={self.id}, strength={self.strength}"
+
 
 
 ############################################################### POWERS #################################################
@@ -53,5 +63,8 @@ def validates_description(self,key,description):
         raise ValueError("Description must be Present")
     elif len(description) < 20:
         raise ValueError("Description must be less than 20 characters")
-    return description    
+    return description   
+
+    def __repr__(self):
+        return f"Powers(id={self.id}, name={self.name}, description={self.description}" 
 
